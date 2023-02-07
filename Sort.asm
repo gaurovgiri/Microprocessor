@@ -1,0 +1,25 @@
+#org 3000
+MVI C,03
+
+LOOP: 
+	MOV D,C
+	LXI H,1120
+SORT:
+	MOV A,M
+	INX H
+	CMP M
+	JC SKIP
+	MOV B,M
+	MOV M,A
+	DCX H
+	MOV M,B
+	INX H
+SKIP:	
+	DCR D
+	JNZ SORT
+	DCR C
+	JNZ LOOP
+	HLT
+
+#org 8850
+#db 04,08,06

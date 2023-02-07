@@ -1,0 +1,11 @@
+LDA 2050
+
+CMA
+INR A
+
+STA 2051
+
+HLT
+
+# ORG 2050
+# DB 1

@@ -1,0 +1,47 @@
+MVI C,20H
+
+LXI H,C050
+
+
+MOV B,M ; largest
+MOV D,M ; smallest
+
+INX H
+DCR C
+
+READ:
+	MOV A,M
+	CMP B
+	JNC LARGEST
+	CMP D
+	JC SMALLEST
+	JMP SKIP
+
+LARGEST:
+	MOV B,M
+	JMP SKIP
+
+SMALLEST:
+	MOV D,M
+	JMP SKIP
+
+SKIP:
+	INX H
+	DCR C
+	JNZ READ
+	JMP DONE
+
+DONE:
+	MOV A,D
+	STA C070
+	MOV A,B
+	STA C071
+	HLT
+
+	
+
+	
+	
+
+#org C050
+#db 9,2,4,6,1

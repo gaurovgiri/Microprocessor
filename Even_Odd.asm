@@ -1,0 +1,17 @@
+	   LXI H,2000
+	   MOV A,M
+	   INX H
+	   RRC // ANI 1H
+
+	   JNC EVEN
+	   JMP ODD
+
+EVEN:	   MVI M,22
+	   JMP DONE
+
+ODD:	   MVI M,11
+	   JMP DONE
+
+DONE:	   HLT
+# ORG 2000
+# DB 11

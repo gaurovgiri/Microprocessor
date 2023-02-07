@@ -1,0 +1,44 @@
+LXI H,9000
+MVI C,02H
+MVI B,00H
+
+LOOP:
+	MOV D,M
+	MOV A,L
+	ADI 20H
+	MOV L,A
+	MOV A,D
+	ADD M
+	MVI E,00H
+	CC CARRY
+	MOV D,A
+	MOV A,L
+	ADI 20H
+	MOV L,A
+	MOV M,D
+	MOV A,L
+	ADI 20H
+	MOV L,A
+	MOV M,E
+	JMP NEXT
+	
+
+
+
+CARRY:
+	MVI E,01H
+	RET
+
+NEXT:
+	INR B
+	MOV L,B
+	DCR C
+	JNZ LOOP
+	HLT
+
+
+#org 9000
+#db FF,13
+
+#org 9020
+#db FF,12
