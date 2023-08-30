@@ -1,9 +1,0 @@
-false
-LXI H,9000H
-MOV A,M
-INX H
-ADD M
-JNC SKIP
-MVI B,01H
-
-
